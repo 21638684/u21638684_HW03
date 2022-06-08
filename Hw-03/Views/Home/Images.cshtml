@@ -1,0 +1,31 @@
+﻿@using Hw_03.Models
+
+@model List<FileModel>
+
+    @{
+        ViewBag.Title = "Images";
+    }
+
+    <h2>Images</h2>
+
+    <div class="container">
+        <div class="card-flex">
+            @foreach (FileModel FileN in Model)// foreach and get all the images
+            {
+                <div class="col-sm-4">
+                    <div class="row" style="width:200px;">
+                        <img height:"150" width="150" class="img-top" src="@Url.Content("~/Media/Images/")@FileN.FileName" alt="Card image cap" />
+                        <div class="card-body">
+                            <button class="btn btn-success">
+                            @Html.ActionLink("Download", "DownloadImages", new { FileName = FileN.FileName})
+                                </button>
+                            <button class="btn btn-danger">
+                            @Html.ActionLink("Delete", "DeleteImages", new { FileName = FileN.FileName })
+                                </button>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

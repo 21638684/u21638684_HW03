@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+
+<div class="jumbotron">
+    <h2>Media Uploading System</h2>
+</div>
+
+
+    <div class="col-lg-6";>
+        <h3>Description</h3>
+        <p>
+            <b>
+                Media Uploading system helps you tranfer data from your local computer to a remote computer system.It is easy to use and have nice features.You can select the file of you wish to Upload and hit the Submit button.GET STARTED!!
+            </b>
+        </p>
+    </div>
+
+
+<div class="col-lg-6";>
+
+    <h2>Option Selected</h2>
+    @using (Html.BeginForm("Home", "HOME", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label for="documents">Documents</label>@Html.RadioButton("Media", "documents")<br />
+            <label for="images">Images</label>@Html.RadioButton("Media", "images")<br />
+            <label for="vides">Videos</label>@Html.RadioButton("Media", "videos")<br />
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { type = "file" })
+            
+            <input type="submit" value="Submit" />
+        </div>
+        @ViewBag.Message
+
+    }
+</div>
+

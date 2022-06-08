@@ -1,0 +1,45 @@
+﻿@using Hw_03.Models
+
+@model List<FileModel>
+
+@{
+    ViewBag.Title = "Files";
+}
+<div class="file">
+    <h2>Files</h2>
+</div>
+
+<div class="well-lg">
+    <h3>Documents of any type</h3>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table-hover" scope="col">File Name</th>
+                <th class="table-hover" scope="col">Download Option</th>
+                <th class="table-hover" scope="col">Delete Option</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            @foreach (FileModel FileN in Model)
+            {
+                <tr>
+                    <td>
+                        @FileN.FileName
+                    </td>
+                    <td>
+                        <button class="btn btn-success">
+                            @Html.ActionLink("Download", "DownloadFiles", new { FileName = FileN.FileName })
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">
+                        @Html.ActionLink("Delete", "DeleteFiles", new { FileName = FileN.FileName })
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
